@@ -46,3 +46,36 @@ print(A^B, end= " \n")
 #Funcion issubset
 print("Funcion issubset. Muestro si M es un subconjunto de A: ")
 print(M.issubset(A), end=" \n")
+
+import matplotlib.pyplot as plt
+from matplotlib_venn import venn3, venn3_circles
+A=15
+B=20
+C=3
+D=5
+E=14
+F=47
+G=0
+NC=1
+
+fig = plt.figure(figsize=(5,5), facecolor='cyan')
+ax = fig.add_subplot()
+
+diagram = venn3(subsets={"111":1, "110":1, "101":1, "100":1,"011":1, "010":1, "001":1}, set_labels = ('Motos', 'Autos', 'Bicicletas'))
+for subset in ("111", "110", "101", "100","011", "010", "001"): diagram.get_label_by_id(subset).set_text(subset)
+
+diagram.get_label_by_id('100').set_text(D)
+diagram.get_label_by_id('110').set_text(B)
+diagram.get_label_by_id('111').set_text(A)
+diagram.get_label_by_id('010').set_text(C)
+diagram.get_label_by_id('011').set_text(E)
+diagram.get_label_by_id('001').set_text(G)
+diagram.get_label_by_id('101').set_text(F)
+
+ax.text(-0.55, -0.42, NC)
+
+plt.title("Medios de Transporte Preferidos")
+plt.axis('on')
+plt.show()
+
+
